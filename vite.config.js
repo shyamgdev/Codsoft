@@ -7,6 +7,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'tasks/level-1/task-1/index.html'),
+        task2: resolve(__dirname, 'tasks/level-1/task-2/index.html'),
       }
     }
   }
