@@ -6,3 +6,6 @@
 
 #### [Task 1:](https://github.com/shyamgdev/Codsoft/tree/main/tasks/level-1/task-1)
 Landing Page [Netflix Clone](https://codsoft.netlify.app/tasks/level-1/task-1/)
+
+#### [Task 2:](https://github.com/shyamgdev/Codsoft/tree/main/tasks/level-1/task-2)
+Landing Page [Personal Portfolio](https://codsoft.netlify.app/tasks/level-1/task-2/)
