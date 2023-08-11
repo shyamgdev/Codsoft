@@ -21,19 +21,19 @@
             <div class="font-semibold">Prashant Gupta</div>
             <!-- HUMBURGER MENU ICON FOR MINI DEVICES -->
             <div id="nav-btn" class="relative w-6 h-6 md:hidden">
-              <svg class="block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6">
+              <svg class="block open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>
-              <svg class="hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6">
+              <svg class="hidden close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
 
             </div>
           </div>
           <!-- RIGHT -->
-          <div id="navbar" class="w-full max-h-0 overflow-hidden md:block duration-1000">
+          <div id="navbar" class="w-full max-h-0 md:max-h-fit overflow-hidden md:block duration-1000">
             <!-- NAVBAR -->
             <nav>
               <ul
@@ -308,9 +308,9 @@
           <div class="max-w-lg m-auto text-center space-y-4">
             <h4>Have You Any Project</h4>
             <hr class="max-w-[4rem] m-auto">
-            <button>
-              <a href="https://www.linkedin.com/in/shyamgdev" target="_blank">Hire Me</a>
-            </button>
+            <a href="https://www.linkedin.com/in/shyamgdev" target="_blank">
+              <button>Hire Me</button>
+            </a>
           </div>
         </section>
       </main>
@@ -330,12 +330,27 @@
     const navbar = document.querySelector("#navbar");
     const toggleNavButton = document.querySelector('#nav-btn');
 
-    toggleNavButton.addEventListener("click", () => {
-      // navbar.classList.toggle("hidden")
+    const toggleNavbar = ()=>{
       navbar.classList.toggle("max-h-0");
       navbar.classList.toggle("max-h-96");
-      // navbar.style.maxHeight = "20rem"
-    })
+      const navBtnIcons = document.querySelectorAll("#nav-btn svg");
+      navBtnIcons.forEach((e) => {
+        e.classList.toggle("block");
+        e.classList.toggle("hidden");
+      });
+    }
+
+    // TOGGLE NAVBAR ON MINI DEVICES
+    toggleNavButton.addEventListener("click", toggleNavbar)
+
+    // HIDE NAVBAR WHEN CLICKING ON NAVBAR ITEMS/LINKS
+    const navItems = document.querySelectorAll("nav li")
+
+    for (let i = 0; i < navItems.length; i++) {
+      navItems[i].addEventListener("click", ()=>{
+        toggleNavbar()
+      })
+    }
 
   </script>
 </body>
