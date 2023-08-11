@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  * {
+    @apply transition-all
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  img {
+    @apply w-full h-full object-cover cursor-pointer
+  }
+
+  button {
+    @apply px-4 py-2 rounded font-medium text-black hover:text-white bg-white hover:bg-transparent border-2
+  }
+}
