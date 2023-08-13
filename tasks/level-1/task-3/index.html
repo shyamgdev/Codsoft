@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3: Calculator</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body class="overflow-hidden">
+  <!-- APP -->
+  <section class="min-w-full min-h-screen max-h-screen bg-[#FCFCFC]">
+    <!-- APP CONTAINER -->
+    <div class="max-w-md h-screen mx-auto bg-[#FAFAFC] shadow-lg">
+      <!-- CALCULATOR -->
+      <div class="px-6 h-full flex flex-col justify-end fixed bottom-0">
+        <!-- CALCULATOR SCREEN -->
+        <div class="text-[#58676E] space-y-2">
+          <input id="calculator-screen" type="text"
+            class="w-full h-fit outline-none text-right text-4xl bg-transparent" readonly>
+          <br>
+          <div id="calculator-result"
+            class="w-full min-h-[2rem] pr-[3px] outline-none text-right text-2xl opacity-50 bg-transparent"></div>
+        </div>
+        <!-- CALCULATOR BUTTONS -->
+        <div class="h-fit grid grid-cols-4 grid-rows-5 py-8 gap-2">
+          <button id="clearAll" class="arithmetic-operator text-white bg-[#FEB92D]">AC</button>
+          <button id="percentage" class="arithmetic-operator text-[#9F7E3F] bg-[#F5EFE3]">%</button>
+          <button id="clear" class="text-[#9F7E3F] bg-[#F5EFE3]">C</button>
+          <button id="divide" class="arithmetic-operator text-[#652790] bg-[#E1D5E9]">/</button>
+          <button class="num">7</button>
+          <button class="num">8</button>
+          <button class="num">9</button>
+          <button id="multiply" class="arithmetic-operator text-[#652790] bg-[#E1D5E9]">*</button>
+          <button class="num">4</button>
+          <button class="num">5</button>
+          <button class="num">6</button>
+          <button id="subtraction" class="arithmetic-operator text-[#652790] bg-[#E1D5E9]">-</button>
+          <button class="num">1</button>
+          <button class="num">2</button>
+          <button class="num">3</button>
+          <button id="addition" class="arithmetic-operator text-[#652790] bg-[#E1D5E9]">+</button>
+          <button class="num">00</button>
+          <button class="num">0</button>
+          <button id="dot-operator" class="num">.</button>
+          <button id="equal" class="arithmetic-operator text-white bg-[#8F27DE]">=</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const calculatorScreen = document.querySelector('#calculator-screen');
+    const calculatorResult = document.querySelector('#calculator-result');
+    const buttons = document.querySelectorAll('button');
+    const arithmetic_regex = /[+-/*%]/;
+    const num_regex = /\d/;
+    let equal = false;
+
+    const calculate = (key) => {
+      if (equal) {
+        calculatorScreen.value = '';
+        calculatorResult.innerText = '';
+        calculatorScreen.classList.toggle('text-4xl');
+        calculatorScreen.classList.toggle('text-2xl');
+        calculatorScreen.classList.toggle('opacity-50');
+        calculatorResult.classList.toggle('text-2xl');
+        calculatorResult.classList.toggle('text-4xl');
+        calculatorResult.classList.toggle('opacity-50');
+        equal = false;
+      }
+      if (key === "AC") {
+        calculatorScreen.value = '';
+        calculatorResult.innerText = '';
+      }
+      else if (key === "C" || key === "Backspace") {
+        calculatorScreen.value = calculatorScreen.value.slice(0, calculatorScreen.value.length - 1);
+      }
+      else if (key === "=" || key === "Enter") {
+        if (calculatorScreen.value === '') { return; }
+        if (calculatorResult.innerText === '') {
+          calculatorResult.innerText = "Expression Error";
+          return;
+        }
+        calculatorScreen.classList.toggle('text-4xl');
+        calculatorScreen.classList.toggle('text-2xl');
+        calculatorScreen.classList.toggle('opacity-50');
+        calculatorResult.classList.toggle('text-2xl');
+        calculatorResult.classList.toggle('text-4xl');
+        calculatorResult.classList.toggle('opacity-50');
+        equal = true;
+      }
+      else if (key === "." && !num_regex.test(calculatorScreen.value.slice(-1))) {
+        if (calculatorScreen.value.slice(-1) === '.') { return; }
+        calculatorScreen.value += '0.';
+      }
+      else {
+        if (arithmetic_regex.test(key) && arithmetic_regex.test(calculatorScreen.value.slice(-1))) {
+          calculatorScreen.value = calculatorScreen.value.slice(0, calculatorScreen.value.length - 1);
+        }
+        calculatorScreen.value += key;
+      }
+      try {
+        if (calculatorScreen.value === '') {
+          calculatorResult.innerText = '';
+          return;
+        }
+        let result = eval(calculatorScreen.value.replace(/\b0+(\d+)/g, "$1"));
+        calculatorResult.innerText = result;
+      }
+      catch (error) {
+        console.log(error);
+      }
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => calculate(button.innerText));
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (num_regex.test(e.key) || arithmetic_regex.test(e.key) || e.key === "Enter" || e.key === "Backspace") {
+        calculate(e.key);
+      }
+    })
+  </script>
+</body>
+
+</html>

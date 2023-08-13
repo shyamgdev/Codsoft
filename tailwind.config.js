@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./tasks/level-1/task-1/**/*.{html,js,ts,jsx,tsx}",
     "./tasks/level-1/task-2/**/*.{html,js,ts,jsx,tsx}",
+    "./tasks/level-1/task-3/**/*.{html,js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
