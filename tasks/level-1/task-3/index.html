@@ -10,11 +10,11 @@
 
 <body class="overflow-hidden">
   <!-- APP -->
-  <section class="min-w-full min-h-screen max-h-screen bg-[#FCFCFC]">
+  <section class="min-w-full min-h-screen max-h-screen bg-[#FCFCFC] fixed bottom-0">
     <!-- APP CONTAINER -->
     <div class="max-w-md h-screen mx-auto bg-[#FAFAFC] shadow-lg">
       <!-- CALCULATOR -->
-      <div class="px-6 h-full flex flex-col justify-end fixed bottom-0">
+      <div class="px-6 w-full h-full flex flex-col justify-end">
         <!-- CALCULATOR SCREEN -->
         <div class="text-[#58676E] space-y-2">
           <input id="calculator-screen" type="text"
@@ -55,7 +55,7 @@
     const calculatorResult = document.querySelector('#calculator-result');
     const buttons = document.querySelectorAll('button');
     const arithmetic_regex = /[+-/*%]/;
-    const num_regex = /\d/;
+    const num_regex = /^(?:\d+)$/; // /\d/;
     let equal = false;
 
     const calculate = (key) => {
