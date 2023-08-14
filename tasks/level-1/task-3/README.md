@@ -2,6 +2,8 @@
 
 This is a simple calculator web application that allows users to perform basic arithmetic operations. The calculator has been implemented using HTML and JavaScript.
 
+Demo: https://codsoft.netlify.app/tasks/level-1/task-3/
+
 ## Description
 
 This calculator web app provides a user-friendly interface for performing basic arithmetic calculations. It includes a graphical user interface with buttons for digits (0-9), arithmetic operators (+, -, *, /), decimal point (.), and special buttons for clearing the input and calculating the result.
