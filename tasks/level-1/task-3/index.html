@@ -54,7 +54,7 @@
     const calculatorScreen = document.querySelector('#calculator-screen');
     const calculatorResult = document.querySelector('#calculator-result');
     const buttons = document.querySelectorAll('button');
-    const arithmetic_regex = /[+-/*%]/;
+    const arithmetic_regex = /[+-/*]/;
     const num_regex = /^(?:\d+)$/; // /\d/;
     let equal = false;
 
@@ -79,7 +79,7 @@
       }
       else if (key === "=" || key === "Enter") {
         if (calculatorScreen.value === '') { return; }
-        if (calculatorResult.innerText === '') {
+        if (calculatorResult.innerText === '' || calculatorResult.innerText === "Expression Error") {
           calculatorResult.innerText = "Expression Error";
           return;
         }
