@@ -8,7 +8,7 @@ const projects = [
   {
     title: "Currency convertor",
     img: "./assets/currency-convertor.png",
-    githubRepo: "https://github.com/shyamgdev/TechnoHacks",
+    githubRepo: "https://github.com/shyamgdev/TechnoHacks/tree/main/tasks/task-1",
     liveUrl: "https://technohacksinternship.netlify.app/tasks/task-1/"
   },
   {
@@ -55,10 +55,10 @@ let data = "";
 
 projects.forEach((project) => {
   data += `<div class="relative group/card max-w-[25rem]">
-    <img class="rounded-md" src="${project.img}" alt="${project.name}">
+    <img class="rounded-md" src="${project.img}" alt="${project.title}">
     <div
       class="h-0 group-hover/card:h-full absolute top-0 left-0 right-0 m-auto flex flex-col items-center justify-center space-y-2 transition-all duration-500 overflow-hidden bg-[#271762]/40">
-      <h2>Netflix Clone</h2>
+      <h2>${project.title}</h2>
       <div class="flex flex-row space-x-2">
         <button>
           <a href="${project.githubRepo}"
