@@ -9,6 +9,7 @@ export default defineConfig({
         main: resolve(__dirname, '/index.html'),
         task1: resolve(__dirname, 'tasks/level-1/task-1/index.html'),
         task2: resolve(__dirname, 'tasks/level-1/task-2/index.html'),
+        task2Script: resolve(__dirname, 'tasks/level-1/task-2/script.js'),
         task3: resolve(__dirname, 'tasks/level-1/task-3/index.html'),
       }
     }
